@@ -25,15 +25,25 @@ The goal was to make it feel like an actual mall, not another Bootstrap starter 
 ## Project structure
 
 ABCDMallWebsite/
+
 ├── Areas/
-│   └── Admin/          → admin panel, with its own Controllers, Models, Views
+
+│   └── Admin/  → admin panel, with its own Controllers, Models, Views
+
 ├── Controllers/         → controllers for the public-facing site
+
 ├── Models/
+
 ├── Views/
+
 ├── wwwroot/
+
 │   ├── css/             → style.css, including the custom theme
+
 │   ├── images/
+
 │   └── js/
+
 └── Program.cs
 
 ## Running it locally
