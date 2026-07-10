@@ -1,0 +1,29 @@
+﻿@model List<Feedback>
+
+@{
+    ViewData["Title"] = "Feedbacks";
+}
+
+<h3>Customer Feedbacks</h3>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Submitted On</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var fb in Model)
+        {
+            <tr>
+                <td>@fb.CustomerName</td>
+                <td>@fb.Email</td>
+                <td>@fb.Message</td>
+                <td>@fb.SubmittedOn.ToString("dd-MM-yyyy")</td>
+            </tr>
+        }
+    </tbody>
+</table>

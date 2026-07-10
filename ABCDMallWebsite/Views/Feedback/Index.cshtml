@@ -1,0 +1,51 @@
+﻿@model Feedback
+
+@{
+    ViewData["Title"] = "Feedback";
+}
+
+<div class="container-fluid bg-light py-5 mb-5">
+    <div class="container text-center">
+        <h1 class="display-4">
+            FEED<span class="text-uppercase text-primary bg-light px-2">BACK</span>
+        </h1>
+        <p>We value your thoughts – share with us.</p>
+    </div>
+</div>
+
+<div class="container my-5">
+    <h1 class="mb-4 fw-bold">Feedback</h1>
+    <p class="mb-4 text-muted">Please fill out the form below.</p>
+
+    <!-- Success message -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    <!-- Feedback form -->
+    <form asp-controller="Feedback" asp-action="Index" method="post" class="p-4 bg-white rounded shadow-sm">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="mb-3">
+            <label asp-for="CustomerName" class="form-label fw-semibold">Name</label>
+            <input asp-for="CustomerName" class="form-control rounded-pill shadow-sm" placeholder="Enter your name" />
+            <span asp-validation-for="CustomerName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label fw-semibold">Email</label>
+            <input asp-for="Email" class="form-control rounded-pill shadow-sm" placeholder="Enter your email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Message" class="form-label fw-semibold">Message</label>
+            <textarea asp-for="Message" class="form-control rounded shadow-sm" rows="5" placeholder="Type your message..."></textarea>
+            <span asp-validation-for="Message" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill fw-semibold">Submit</button>
+    </form>
+</div>

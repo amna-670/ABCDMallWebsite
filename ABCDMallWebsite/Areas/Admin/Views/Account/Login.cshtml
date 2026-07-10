@@ -1,0 +1,62 @@
+﻿@model ABCDMallWebsite.Areas.Admin.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login - ABCD Mall</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center" style="min-height:100vh">
+        <div class="card shadow p-4 p-md-5" style="width:100%; max-width:420px;">
+
+            <div class="text-center mb-4">
+                <span class="brand-mark d-inline-flex mb-3" style="width:52px;height:52px;font-size:1.3rem;"><i class="fa fa-store"></i></span>
+                <h3 class="fw-bold mb-1">Admin Sign In</h3>
+                <p class="small mb-0" style="color: var(--mall-ink-soft);">ABCD Mall Dashboard</p>
+            </div>
+
+            <form asp-action="Login" asp-controller="Account" asp-area="Admin" method="post">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Username" class="form-label"></label>
+                    <input asp-for="Username" class="form-control" placeholder="Enter your username" />
+                    <span asp-validation-for="Username" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label"></label>
+                    <input asp-for="Password" class="form-control" placeholder="Enter your password" />
+                    <span asp-validation-for="Password" class="text-danger small"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+            </form>
+
+            <p class="text-center small mt-4 mb-0" style="color: var(--mall-ink-soft);">
+                Demo credentials: <strong>admin</strong> / <strong>admin123</strong>
+            </p>
+            <p class="text-center small mt-2 mb-0">
+                <a asp-area="" asp-controller="Home" asp-action="Index" style="color: var(--mall-ink-soft);"><i class="fa fa-arrow-left me-1"></i>Back to site</a>
+            </p>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

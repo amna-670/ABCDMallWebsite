@@ -1,0 +1,33 @@
+﻿@model List<Gallery>
+
+@{
+    ViewData["Title"] = "Gallery";
+}
+
+<div class="container-fluid bg-light py-5 mb-5">
+    <div class="container text-center">
+        <h1 class="display-4">
+            Mall <span class="text-uppercase text-primary bg-light px-2">Gallery</span>
+        </h1>
+        <p>See ABCD Mall in pictures</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="gallery-item">
+                    @if (item.ImagePath != null)
+                    {
+                        <img src="@item.ImagePath" class="img-fluid" alt="@item.Title" />
+                    }
+                    <div class="gallery-overlay">
+                        <h5>@item.Title</h5>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@model FoodCourt
+
+@{
+    ViewData["Title"] = "Delete Food Court";
+}
+
+<h3>Delete Food Court</h3>
+<p class="text-danger">Do you really want to delete this food court?</p>
+
+<div class="card" style="width: 350px;">
+    <div class="card-body">
+        <p><b>Counter:</b> @Model.CounterName</p>
+        <p><b>Menu:</b> @Model.MenuItems</p>
+    </div>
+</div>
+
+<br />
+
+<form asp-action="Delete" method="post">
+    <input asp-for="Id" type="hidden" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

@@ -1,0 +1,211 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid pb-5 hero-header bg-light mb-5">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center mb-5">
+            <div class="col-lg-6">
+                <span class="eyebrow-badge"><i class="fa fa-heart"></i> Karachi's Family Favorite</span>
+                <h1 class="display-1 mb-4">
+                    Welcome to <span class="text-primary">ABCD Mall</span>
+                </h1>
+                <h5 class="d-inline-block bg-white rounded-pill shadow-sm py-3 px-4 mb-3">
+                    Your place for Shopping, Food &amp; Fun
+                </h5>
+                <p class="mb-4">
+                    Explore shops, enjoy tasty food, and watch movies — all in one mall.
+                </p>
+                <a asp-controller="Shop" asp-action="Index" class="btn btn-primary px-4 me-2">Explore Shops</a>
+                <a asp-controller="Movie" asp-action="Index" class="btn btn-outline-primary px-4">Book Movie</a>
+            </div>
+            <div class="col-lg-6">
+                <img src="~/img/mall.jpg.jpg" class="img-fluid w-100 rounded-4 shadow" style="height:400px; object-fit:cover;" />
+            </div>
+        </div>
+        <div class="row g-5 text-center">
+            <div class="col-md-3">
+                <div class="icon-circle primary"><i class="fa fa-shopping-bag"></i></div>
+                <h5>Top Brands</h5>
+            </div>
+            <div class="col-md-3">
+                <div class="icon-circle secondary"><i class="fa fa-utensils"></i></div>
+                <h5>Food Court</h5>
+            </div>
+            <div class="col-md-3">
+                <div class="icon-circle accent"><i class="fa fa-film"></i></div>
+                <h5>Multiplex Cinema</h5>
+            </div>
+            <div class="col-md-3">
+                <div class="icon-circle primary"><i class="fa fa-car"></i></div>
+                <h5>Parking Facility</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Admin Dashboard Access (for reviewers / recruiters) -->
+<div class="container mb-5">
+    <div class="card border-0 shadow-sm" style="background: rgba(31,111,99,.08); border-radius:16px;">
+        <div class="card-body p-4 p-md-5 d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+            <div>
+                <span class="eyebrow-badge" style="background: rgba(31,111,99,.14); color: var(--mall-accent-dark);">
+                    <i class="fa fa-user-shield"></i> For Recruiters &amp; Reviewers
+                </span>
+                <h4 class="mb-2">This project also includes a full <span class="text-primary">Admin Dashboard</span></h4>
+                <p class="mb-0" style="color: var(--mall-ink-soft);">
+                    Manage shops, movies, food court, gallery, tickets and feedback from one place.
+                    Demo login — <strong>admin</strong> / <strong>admin123</strong>
+                </p>
+            </div>
+            <a asp-area="Admin" asp-controller="Account" asp-action="Login" class="btn btn-primary px-4 flex-shrink-0">
+                <i class="fa fa-tachometer-alt me-2"></i>Go to Admin Dashboard
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Mall Diagram -->
+<div class="container-fluid bg-light py-5 text-center">
+    <h1 class="display-4">MALL <span class="text-primary">DIAGRAM</span></h1>
+    <p>See the complete layout of ABCD Mall</p>
+    <img src="~/images/mall-diagram.png" class="img-fluid rounded shadow mt-3" style="max-width:900px;" />
+</div>
+<div class="container py-5">
+    <div class="row g-4 text-center">
+        <div class="col-md-3"><h5>Ground Floor</h5><p>Fashion, Electronics</p></div>
+        <div class="col-md-3"><h5>First Floor</h5><p>Food Court, Cafes</p></div>
+        <div class="col-md-3"><h5>Second Floor</h5><p>Cinema, Entertainment</p></div>
+        <div class="col-md-3"><h5>Third Floor</h5><p>Kids Zone, Gaming</p></div>
+    </div>
+    <div class="text-center mt-4">
+        <h5>7 Level Parking Facility</h5>
+        <p>Secure parking available 24/7</p>
+    </div>
+</div>
+
+<!-- About Mall -->
+<div class="container py-5">
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <img src="~/img/mall-about.jpg" class="img-fluid rounded shadow" style="max-height:400px;" />
+        </div>
+        <div class="col-lg-6">
+            <h1>About <span class="text-primary">ABCD Mall</span></h1>
+            <p>ABCD Mall offers shopping, food, cinema and family entertainment.</p>
+            <ul>
+                <li>4 Floors Shopping</li>
+                <li>Multiplex Cinema</li>
+                <li>Food Court</li>
+                <li>Parking Facility</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Shops Section -->
+<div class="container py-5 text-center">
+    <h1>Shopping <span class="text-primary">Centers</span></h1>
+    <p>Popular stores at ABCD Mall</p>
+    <div class="row g-4">
+        @foreach (var shop in ViewBag.Shops)
+        {
+            <div class="col-md-3">
+                <div class="card shadow-sm h-100 text-center">
+                    @if (shop.ImagePath != null)
+                    {
+                        <img src="@shop.ImagePath" class="card-img-top" style="height:150px; object-fit:cover;">
+                    }
+                    <div class="card-body">
+                        <h5><a asp-controller="Shop" asp-action="Details" asp-route-id="@shop.Id">@shop.Name</a></h5>
+                        <p>@shop.Description</p>
+                        <a asp-controller="Shop" asp-action="Details" asp-route-id="@shop.Id" class="btn btn-outline-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <a asp-controller="Shop" asp-action="Index" class="btn btn-primary btn-lg mt-4">View All Shops</a>
+</div>
+
+<!-- Movies Section -->
+<div class="container py-5 text-center">
+    <h1>Now Showing <span class="text-primary">Movies</span></h1>
+    <p>Latest movies at ABCD Mall Cinema</p>
+    <div class="row g-4">
+        @foreach (var movie in ViewBag.Movies)
+        {
+            <div class="col-md-4">
+                <div class="card shadow h-100">
+                    @if (movie.ImagePath != null)
+                    {
+                        <img src="@movie.ImagePath" class="card-img-top" style="height:180px; object-fit:cover;">
+                    }
+                    <div class="card-body">
+                        <h5><a asp-controller="Movie" asp-action="Details" asp-route-id="@movie.Id">@movie.Title</a></h5>
+                        <span class="badge bg-primary">@movie.Genre</span>
+                        <p>@movie.ShowTime.ToString("dd MMM yyyy hh:mm tt")</p>
+                        <p><span class="badge @(movie.TotalSeats - movie.BookedSeats > 0 ? "bg-success" : "bg-danger")">
+                            @(movie.TotalSeats - movie.BookedSeats > 0 ? movie.TotalSeats - movie.BookedSeats + " Seats Available" : "Housefull!")
+                        </span></p>
+                        <a asp-controller="Movie" asp-action="Details" asp-route-id="@movie.Id" class="btn btn-outline-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <a asp-controller="Movie" asp-action="Index" class="btn btn-primary btn-lg mt-4">View All Movies</a>
+</div>
+
+<!-- Food Court Section -->
+<div class="container py-5 text-center">
+    <h1>Our <span class="text-primary">Food Court</span></h1>
+    <p>Delicious food from top brands</p>
+    <div class="row g-4">
+        @foreach (var fc in ViewBag.FoodCourts)
+        {
+            <div class="col-md-3">
+                <div class="card shadow-sm h-100 text-center">
+                    @if (fc.ImagePath != null)
+                    {
+                        <img src="@fc.ImagePath" class="card-img-top" style="height:150px; object-fit:cover;">
+                    }
+                    <div class="card-body">
+                        <h5><a asp-controller="FoodCourt" asp-action="Details" asp-route-id="@fc.Id">@fc.CounterName</a></h5>
+                        <p>@fc.MenuItems</p>
+                        <a asp-controller="FoodCourt" asp-action="Details" asp-route-id="@fc.Id" class="btn btn-outline-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <a asp-controller="FoodCourt" asp-action="Index" class="btn btn-primary btn-lg mt-4">View Full Food Court</a>
+</div>
+
+<!-- Gallery Section -->
+<div class="container py-5 text-center">
+    <h1>Mall <span class="text-primary">Gallery</span></h1>
+    <p>See highlights of ABCD Mall</p>
+
+    <div class="row g-4">
+        @foreach (var item in ViewBag.Galleries)
+        {
+            @if (item.ImagePath != null)
+            {
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="@item.ImagePath" class="img-fluid rounded shadow-sm" alt="@item.Title">
+                        <div class="gallery-overlay">
+                            <h5>@item.Title</h5>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div class="text-center mt-5">
+        <a asp-controller="Gallery" asp-action="Index" class="btn btn-primary btn-lg">
+            View Full Gallery
+        </a>
+    </div>
+</div>

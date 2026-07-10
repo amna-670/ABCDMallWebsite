@@ -1,0 +1,39 @@
+﻿@model FoodCourt
+
+@{
+    ViewData["Title"] = "Edit Food Court";
+}
+
+<h3>Edit Food Court</h3>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input asp-for="Id" type="hidden" />
+    <input asp-for="ImagePath" type="hidden" />
+
+    <div class="mb-3">
+        <label asp-for="CounterName" class="form-label">Counter Name</label>
+        <input asp-for="CounterName" class="form-control" />
+        <span asp-validation-for="CounterName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="MenuItems" class="form-label">Menu Items</label>
+        <textarea asp-for="MenuItems" class="form-control"></textarea>
+        <span asp-validation-for="MenuItems" class="text-danger"></span>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.ImagePath))
+    {
+        <div class="mb-3">
+            <label class="form-label">Current Image:</label><br />
+            <img src="@Model.ImagePath" width="100" height="80" />
+        </div>
+    }
+    <div class="mb-3">
+        <label class="form-label">Upload New Image</label>
+        <input type="file" name="imageFile" class="form-control" accept=".png,.jpg,.jpeg" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

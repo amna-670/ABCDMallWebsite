@@ -1,0 +1,46 @@
+﻿@model Movie
+
+@{
+    ViewData["Title"] = "Add Movie";
+}
+
+<h3>Add Movie</h3>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label">Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Genre" class="form-label">Genre</label>
+        <input asp-for="Genre" class="form-control" />
+        <span asp-validation-for="Genre" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ShowTime" class="form-label">Show Time</label>
+        <input asp-for="ShowTime" class="form-control" type="datetime-local" />
+        <span asp-validation-for="ShowTime" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TotalSeats" class="form-label">Total Seats</label>
+        <input asp-for="TotalSeats" class="form-control" type="number" />
+        <span asp-validation-for="TotalSeats" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Upload Image</label>
+        <input type="file" name="imageFile" class="form-control" accept=".png,.jpg,.jpeg" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

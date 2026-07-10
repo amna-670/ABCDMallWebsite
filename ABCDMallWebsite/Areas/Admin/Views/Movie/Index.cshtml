@@ -1,0 +1,50 @@
+﻿@model List<Movie>
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<h3>Movies</h3>
+<a asp-action="Create" class="btn btn-success mb-3">Add Movie</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Show Time</th>
+            <th>Total Seats</th>
+            <th>Booked</th>
+            <th>Available</th>
+            <th>Image</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Title</td>
+                <td>@m.Genre</td>
+                <td>@m.ShowTime.ToString("dd-MM-yyyy hh:mm tt")</td>
+                <td>@m.TotalSeats</td>
+                <td>@m.BookedSeats</td>
+                <td>@(m.TotalSeats - m.BookedSeats)</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(m.ImagePath))
+                    {
+                        <img src="@m.ImagePath" width="70" height="50" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@m.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@m.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

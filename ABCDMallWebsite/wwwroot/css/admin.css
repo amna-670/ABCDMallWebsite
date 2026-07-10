@@ -1,0 +1,123 @@
+﻿/* ===== General ===== */
+body {
+    background-color: #f4f6f9;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+    min-height: 100vh;
+    width: 250px;
+    background: linear-gradient(180deg, #1a1a2e, #16213e);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    z-index: 100;
+}
+
+.sidebar-brand {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 10px;
+}
+
+    .sidebar-brand span {
+        color: #f0a500;
+    }
+
+.sidebar .nav-link {
+    color: rgba(255,255,255,0.75);
+    padding: 12px 20px;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+    .sidebar .nav-link:hover {
+        color: #fff;
+        background-color: rgba(255,255,255,0.1);
+        padding-left: 28px;
+    }
+
+    .sidebar .nav-link.active {
+        color: #f0a500;
+        background-color: rgba(240,165,0,0.1);
+        border-left: 3px solid #f0a500;
+    }
+
+    .sidebar .nav-link i {
+        margin-right: 10px;
+        width: 18px;
+    }
+
+/* ===== Top Navbar ===== */
+.top-navbar {
+    margin-left: 250px;
+    background-color: #fff;
+    padding: 12px 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+    .top-navbar .admin-name {
+        font-weight: 600;
+        color: #1a1a2e;
+    }
+
+/* ===== Main Content ===== */
+.main-content {
+    margin-left: 250px;
+    padding: 30px;
+}
+
+/* ===== Stats Cards ===== */
+.stat-card {
+    border-radius: 12px;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+    .stat-card .stat-icon {
+        font-size: 40px;
+        opacity: 0.8;
+    }
+
+    .stat-card .stat-number {
+        font-size: 36px;
+        font-weight: bold;
+    }
+
+    .stat-card .stat-label {
+        font-size: 14px;
+        opacity: 0.9;
+    }
+
+/* ===== Management Cards ===== */
+.manage-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+    .manage-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    .manage-card .card-icon {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }

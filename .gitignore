@@ -1,0 +1,53 @@
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+Debug/
+Release/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.tmp
+*.nupkg
+
+# Database files
+*.mdf
+*.ldf
+
+# NuGet packages
+packages/
+*.nupkg
+
+# Logs
+*.log
+*.logs
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Visual Studio Code
+.vscode/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+
+# Publish Web Output
+*.Publish.xml
+*.azurePubxml
+
+# Entity Framework Core
+Migrations/*.Designer.cs
+Migrations/*.cs
+
+# wwwroot/lib
+wwwroot/lib/

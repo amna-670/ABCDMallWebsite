@@ -1,0 +1,42 @@
+﻿@model List<FoodCourt>
+
+@{
+    ViewData["Title"] = "Food Courts";
+}
+
+<h3>Food Courts</h3>
+<a asp-action="Create" class="btn btn-success mb-3">Add Food Court</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Counter</th>
+            <th>Menu</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var fc in Model)
+        {
+            <tr>
+                <td>@fc.CounterName</td>
+                <td>@fc.MenuItems</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(fc.ImagePath))
+                    {
+                        <img src="@fc.ImagePath" width="80" height="60" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@fc.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@fc.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

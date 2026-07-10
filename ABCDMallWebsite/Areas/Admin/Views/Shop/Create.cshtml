@@ -1,0 +1,36 @@
+﻿@model Shop
+
+@{
+    ViewData["Title"] = "Add Shop";
+}
+
+<h3>Add Shop</h3>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Floor" class="form-label">Floor</label>
+        <input asp-for="Floor" class="form-control" />
+        <span asp-validation-for="Floor" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Shop Image (PNG, JPG only)</label>
+        <input type="file" name="imageFile" class="form-control" accept=".png,.jpg,.jpeg" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

@@ -1,0 +1,30 @@
+﻿@model List<Ticket>
+
+@{
+    ViewData["Title"] = "Booked Tickets";
+}
+
+<h3>Booked Tickets</h3>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Movie</th>
+            <th>Customer</th>
+            <th>Email</th>
+            <th>Seats</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in Model)
+        {
+            <tr>
+                <td>@ticket.Movie.Title</td>
+                <td>@ticket.CustomerName</td>
+                <td>@ticket.CustomerEmail</td>
+                <td>@ticket.NumberOfSeats</td>
+                <td>@ticket.BookingDate.ToString("dd-MM-yyyy")</td>
+            </tr>
+        }
+    </tbody>
+</table>

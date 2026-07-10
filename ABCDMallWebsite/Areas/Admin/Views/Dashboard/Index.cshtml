@@ -1,0 +1,134 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<!-- Page Heading -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="fw-bold text-dark"> Dashboard Overview</h3>
+    <span class="text-muted">Welcome back, <strong>@Context.Session.GetString("AdminName")</strong>!</span>
+</div>
+
+<!-- Stats Cards Row -->
+<div class="row mb-4">
+
+    <div class="col-md-3 mb-3">
+        <div class="stat-card" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+            <div>
+                <div class="stat-label">Total Shops</div>
+                <div class="stat-number">@ViewBag.TotalShops</div>
+            </div>
+            <div class="stat-icon">
+                <i class="fas fa-store"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="stat-card" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+            <div>
+                <div class="stat-label">Total Movies</div>
+                <div class="stat-number">@ViewBag.TotalMovies</div>
+            </div>
+            <div class="stat-icon">
+                <i class="fas fa-film"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="stat-card" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+            <div>
+                <div class="stat-label">Feedbacks</div>
+                <div class="stat-number">@ViewBag.TotalFeedbacks</div>
+            </div>
+            <div class="stat-icon">
+                <i class="fas fa-comments"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="stat-card" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+            <div>
+                <div class="stat-label">Tickets Booked</div>
+                <div class="stat-number">@ViewBag.TotalTickets</div>
+            </div>
+            <div class="stat-icon">
+                <i class="fas fa-ticket-alt"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Management Cards -->
+<h5 class="fw-bold text-dark mb-3">Manage Sections</h5>
+<div class="row">
+
+    <div class="col-md-4 mb-4">
+        <div class="card manage-card">
+            <div class="card-body text-center p-4">
+                <div class="card-icon"></div>
+                <h5 class="fw-bold">Shops</h5>
+                <p class="text-muted small">Add, edit or delete mall shops</p>
+                <a asp-area="Admin" asp-controller="Shop" asp-action="Index" class="btn btn-primary btn-sm px-4">Manage</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card manage-card">
+            <div class="card-body text-center p-4">
+                <div class="card-icon"></div>
+                <h5 class="fw-bold">Food Courts</h5>
+                <p class="text-muted small">Add, edit or delete food counters</p>
+                <a asp-area="Admin" asp-controller="FoodCourt" asp-action="Index" class="btn btn-primary btn-sm px-4">Manage</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card manage-card">
+            <div class="card-body text-center p-4">
+                <div class="card-icon"></div>
+                <h5 class="fw-bold">Movies</h5>
+                <p class="text-muted small">Add, edit or delete movies</p>
+                <a asp-area="Admin" asp-controller="Movie" asp-action="Index" class="btn btn-primary btn-sm px-4">Manage</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card manage-card">
+            <div class="card-body text-center p-4">
+                <div class="card-icon"></div>
+                <h5 class="fw-bold">Gallery</h5>
+                <p class="text-muted small">Upload and manage gallery images</p>
+                <a asp-area="Admin" asp-controller="Gallery" asp-action="Index" class="btn btn-primary btn-sm px-4">Manage</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card manage-card">
+            <div class="card-body text-center p-4">
+                <div class="card-icon"></div>
+                <h5 class="fw-bold">Feedbacks</h5>
+                <p class="text-muted small">View customer feedbacks</p>
+                <a asp-area="Admin" asp-controller="Feedback" asp-action="Index" class="btn btn-primary btn-sm px-4">View</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card manage-card">
+            <div class="card-body text-center p-4">
+                <div class="card-icon"></div>
+                <h5 class="fw-bold">Tickets</h5>
+                <p class="text-muted small">View all booked tickets</p>
+                <a asp-area="Admin" asp-controller="Ticket" asp-action="Index" class="btn btn-primary btn-sm px-4">View</a>
+            </div>
+        </div>
+    </div>
+
+</div>

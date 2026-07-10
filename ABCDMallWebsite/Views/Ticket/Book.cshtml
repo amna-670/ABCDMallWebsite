@@ -1,0 +1,92 @@
+﻿@model Movie
+
+@{
+    ViewData["Title"] = "Book Ticket";
+}
+
+<div class="container-fluid bg-light py-5 mb-5">
+    <div class="container text-center">
+        <h1 class="display-4">
+            BOOK<span class="text-primary">TICKET</span>
+        </h1>
+        <p>Book your ticket easily</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body text-center bg-light rounded">
+                    <h4 class="fw-bold text-primary">@Model.Title</h4>
+                    <p><i class="fa fa-film me-2"></i>@Model.Genre</p>
+                    <p><i class="fa fa-clock me-2"></i>@Model.ShowTime.ToString("dd MMM yyyy hh:mm tt")</p>
+                    <p>
+                        <i class="fa fa-chair me-2"></i>
+                        Available Seats: <strong class="text-success">@(Model.TotalSeats - Model.BookedSeats)</strong>
+                    </p>
+                </div>
+            </div>
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger">
+                    <i class="fa fa-exclamation-circle me-2"></i>@ViewBag.Error
+                </div>
+            }
+            @if (ViewBag.Success != null)
+            {
+                <div class="alert alert-success">
+                    <i class="fa fa-check-circle me-2"></i>@ViewBag.Success
+                </div>
+            }
+
+            <div class="card shadow p-4">
+                <form asp-controller="Ticket" asp-action="Book" method="post">
+                    <input type="hidden" name="MovieId" value="@Model.Id" />
+                    <h5 class="fw-bold mb-3"><i class="fa fa-user me-2 text-primary"></i>Personal Details</h5>
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" name="CustomerName" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" name="CustomerEmail" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Number of Seats</label>
+                        <input type="number" name="NumberOfSeats" class="form-control" min="1" max="50" required />
+                        <small class="text-muted">Max 50 seats per booking</small>
+                    </div>
+                    <h5 class="fw-bold mb-3 mt-4"><i class="fa fa-credit-card me-2 text-primary"></i>Card Details</h5>
+                    <div class="mb-3">
+                        <label class="form-label">Card Number</label>
+                        <input type="text" name="CardNumber" class="form-control"
+                               pattern="\d{16}" maxlength="16" minlength="16"
+                               placeholder="Enter 16-digit card number" required />
+                        <small class="text-muted">Card number must be exactly 16 digits</small>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Expiry Date</label>
+                            <input type="month" class="form-control" required />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">CVV</label>
+                            <input type="password" class="form-control" maxlength="4" required />
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-ticket-alt me-2"></i>Confirm Booking
+                        </button>
+                        <a asp-controller="Movie" asp-action="Index" class="btn btn-outline-secondary">
+                            <i class="fa fa-arrow-left me-2"></i>Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

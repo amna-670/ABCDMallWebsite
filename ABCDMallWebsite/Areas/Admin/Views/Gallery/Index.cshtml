@@ -1,0 +1,42 @@
+﻿@model List<Gallery>
+
+@{
+    ViewData["Title"] = "Gallery";
+}
+
+<h3>Gallery</h3>
+<a asp-action="Create" class="btn btn-success mb-3">Add Image</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Image</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var g in Model)
+        {
+            <tr>
+                <td>@g.Title</td>
+                <td>@g.Category</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(g.ImagePath))
+                    {
+                        <img src="@g.ImagePath" width="80" height="60" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@g.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@g.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

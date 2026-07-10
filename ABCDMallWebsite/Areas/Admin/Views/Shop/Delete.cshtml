@@ -1,0 +1,25 @@
+﻿@model Shop
+
+@{
+    ViewData["Title"] = "Delete Shop";
+}
+
+<h3>Delete Shop</h3>
+
+<p class="text-danger">Do you really want to delete this shop?</p>
+<div class="card" style="width: 350px;">
+    <div class="card-body">
+        <p><b>Name:</b> @Model.Name</p>
+        <p><b>Description:</b> @Model.Description</p>
+        <p><b>Floor:</b> @Model.Floor</p>
+    </div>
+</div>
+
+<br />
+
+<!-- Delete confirmation form -->
+<form asp-action="Delete" method="post">
+    <input asp-for="Id" type="hidden" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

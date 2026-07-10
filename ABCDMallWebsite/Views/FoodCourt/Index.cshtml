@@ -1,0 +1,45 @@
+﻿@model List<FoodCourt>
+
+@{
+    ViewData["Title"] = "Food Court";
+}
+
+<div class="container-fluid bg-light py-5 mb-5">
+    <div class="container text-center">
+        <h1 class="display-4">
+            FOOD<span class="text-uppercase text-primary bg-light px-2">COURT</span>
+        </h1>
+        <p>Enjoy tasty food from different stalls.</p>
+    </div>
+</div>
+
+<div class="text-center mb-5">
+    <form asp-controller="FoodCourt" asp-action="Search" method="get">
+        <input type="text" name="query" class="form-control w-50 mx-auto"
+               placeholder="Search food courts..." value="@ViewBag.Query" />
+    </form>
+</div>
+
+<div class="row g-4 mb-5" id="shopsContainer">
+    @foreach (var fc in Model)
+    {
+        <div class="col-md-4 shop-item">
+            <div class="card shadow-sm h-100 shop-card">
+                <div class="shop-img-wrapper">
+                    @if (fc.ImagePath != null)
+                    {
+                        <img src="@fc.ImagePath" class="card-img-top" alt="@fc.CounterName" />
+                    }
+                </div>
+
+                <div class="card-body text-center">
+                    <h5 class="card-title">
+                        <a asp-controller="FoodCourt" asp-action="Details" asp-route-id="@fc.Id"
+                           class="text-dark text-decoration-none">@fc.CounterName</a>
+                    </h5>
+                    <p class="card-text">@fc.MenuItems</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

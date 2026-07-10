@@ -1,0 +1,44 @@
+﻿@model List<Shop>
+
+@{
+    ViewData["Title"] = "Shops";
+}
+
+<div class="container-fluid bg-light py-5 mb-5">
+    <div class="container text-center">
+        <h1 class="display-4">
+            SH<span class="text-primary">OPS</span>
+        </h1>
+        <p>Discover your favorite brands and collections</p>
+    </div>
+</div>
+
+<div class="text-center mb-5">
+    <form asp-controller="Shop" asp-action="Search" method="get">
+        <input type="text" name="query" class="form-control w-50 mx-auto"
+               placeholder="Search shops..." value="@ViewBag.Query" />
+    </form>
+</div>
+
+<div class="row g-4 mb-5" id="shopsContainer">
+    @foreach (var shop in Model)
+    {
+        <div class="col-md-4 shop-item">
+            <div class="card shadow-sm h-100 text-center">
+                @if (!string.IsNullOrEmpty(shop.ImagePath))
+                {
+                    <img src="@shop.ImagePath" class="img-fluid w-100" style="height:200px; object-fit:cover;" alt="@shop.Name" />
+
+                }
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a asp-controller="Shop" asp-action="Details" asp-route-id="@shop.Id"
+                           class="text-dark text-decoration-none">@shop.Name</a>
+                    </h5>
+                    <p>@shop.Description</p>
+                    <p><small class="text-muted">Floor: @shop.Floor</small></p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

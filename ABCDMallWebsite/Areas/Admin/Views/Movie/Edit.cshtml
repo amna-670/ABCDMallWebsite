@@ -1,0 +1,59 @@
+﻿@model Movie
+
+@{
+    ViewData["Title"] = "Edit Movie";
+}
+
+<h3>Edit Movie</h3>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input asp-for="Id" type="hidden" />
+    <input asp-for="BookedSeats" type="hidden" />
+    <input asp-for="ImagePath" type="hidden" />
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label">Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Genre" class="form-label">Genre</label>
+        <input asp-for="Genre" class="form-control" />
+        <span asp-validation-for="Genre" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ShowTime" class="form-label">Show Time</label>
+        <input asp-for="ShowTime" class="form-control" type="datetime-local" />
+        <span asp-validation-for="ShowTime" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TotalSeats" class="form-label">Total Seats</label>
+        <input asp-for="TotalSeats" class="form-control" type="number" />
+        <span asp-validation-for="TotalSeats" class="text-danger"></span>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.ImagePath))
+    {
+        <div class="mb-3">
+            <label class="form-label">Current Image:</label><br />
+            <img src="@Model.ImagePath" width="100" height="80" />
+        </div>
+    }
+
+    <div class="mb-3">
+        <label class="form-label">Upload New Image</label>
+        <input type="file" name="imageFile" class="form-control" accept=".png,.jpg,.jpeg" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
