@@ -51,3 +51,5 @@ Migrations/*.cs
 
 # wwwroot/lib
 wwwroot/lib/
+
+.vscode/sftp.json
